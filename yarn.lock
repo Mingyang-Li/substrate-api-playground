@@ -1098,7 +1098,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@polkadot/types@npm:4.15.1, @polkadot/types@npm:^4.11.3-0, @polkadot/types@npm:^4.12.1, @polkadot/types@npm:^4.13.1":
+"@polkadot/types@npm:4.15.1, @polkadot/types@npm:^4.11.3-0, @polkadot/types@npm:^4.12.1, @polkadot/types@npm:^4.13.1, @polkadot/types@npm:^4.15.1":
   version: 4.15.1
   resolution: "@polkadot/types@npm:4.15.1"
   dependencies:
@@ -1525,6 +1525,9 @@ __metadata:
   dependencies:
     "@polkadot/api": ^4.15.1
     "@polkadot/apps-config": ^0.93.1
+    "@polkadot/keyring": ^6.9.1
+    "@polkadot/types": ^4.15.1
+    "@polkadot/util": ^6.9.1
     "@polkadot/util-crypto": ^6.9.1
     "@substrate/calc": ^0.2.0
     "@substrate/dev": ^0.5.4
