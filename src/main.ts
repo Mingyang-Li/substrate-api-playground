@@ -151,26 +151,25 @@
 // 	}
 // }
 
-import { BlockHash } from '@polkadot/types/interfaces';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { AccountsStakingPayoutsService } from './services/accounts/AccountsStakingPayoutsService';
 
 async function main () {
-    const wsProvider = new WsProvider('wss://rpc.polkadot.io');
-    const api = await ApiPromise.create({ provider: wsProvider });
+    const provider = new WsProvider(`wss://kusama.api.onfinality.io/public-ws`);
+    const api = await ApiPromise.create({ provider });
+    // era range: 2,426-2,429
 
-    const blockhash = await api.rpc.chain.getBlockHash(5639853);
-
-    const payOutService = new AccountsStakingPayoutsService(api);
+    const blockHash = await api.rpc.chain.getBlockHash(8119000);
     const data = {
-        hash: blockhash,
-        address: "081c5466574f932ef5e1469e984d5d39ad5946468f0ab9d06c454f74cfc2f16c",
+        hash: blockHash,
+        address: "Daw7XMCQEk2geayTotwXdVnsVd72Y5Xa6aBDV8vC7JCaHcS",
         depth: 1,
-        era: 386,
+        era: 2429,
         unclaimedOnly: true,
-        currentEra: 1
-    };
-    const payOutData = payOutService.fetchAccountStakingPayout(
+        currentEra: 2429
+    }
+    const service = new AccountsStakingPayoutsService(api);
+    const payout = await service.fetchAccountStakingPayout(
         data.hash,
         data.address,
         data.depth,
@@ -178,9 +177,9 @@ async function main () {
         data.unclaimedOnly,
         data.currentEra
     )
-	console.table(payOutData);
+    console.log(payout.erasPayouts[0]);
 }
-  
+
 main().catch((error) => {
     console.error(error);
     process.exit(-1);

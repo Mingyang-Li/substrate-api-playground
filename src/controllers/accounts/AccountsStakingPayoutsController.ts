@@ -83,9 +83,12 @@ export default class AccountsStakingPayoutsController extends AbstractController
 	 * @param res Express Response
 	 */
 	private getStakingPayoutsByAccountId: RequestHandler<IAddressParam> = async (
-		{ params: { address }, query: { depth, era, unclaimedOnly } },
-		res
-	): Promise<void> => {
+			{ 
+				params: { address },
+				query: { depth, era, unclaimedOnly }
+			},
+			res
+		): Promise<void> => {
 		const { hash, eraArg, currentEra } = await this.getEraAndHash(
 			this.verifyAndCastOr('era', era, undefined)
 		);

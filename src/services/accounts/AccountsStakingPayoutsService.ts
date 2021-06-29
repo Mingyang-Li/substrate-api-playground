@@ -386,7 +386,6 @@ export class AccountsStakingPayoutsService extends AbstractService {
 				hash,
 				validatorControllerOption.unwrap()
 			);
-
 			if (validatorLedgerOption.isNone) {
 				return {
 					commission,
